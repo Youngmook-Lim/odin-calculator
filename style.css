@@ -70,6 +70,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #d32f3f;
 }
 
 .screen-calc {
