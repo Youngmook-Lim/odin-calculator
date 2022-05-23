@@ -23,7 +23,7 @@ const calcAdd = (x, y) => x + y;
 const calcSub = (x, y) => x - y;
 const calcMul = (x, y) => x * y;
 const calcDiv = (x, y) => {
-  if (y === 0) return;
+  // if (y === 0) return;
   return Math.round((x / y + Number.EPSILON) * 100000) / 100000;
 };
 const operate = (op, x, y) => {
@@ -48,6 +48,37 @@ const deleteChar = function () {
     operation.op = "";
     screenCalc.textContent = screenCalc.textContent.slice(0, -3);
   }
+};
+
+const calculate = function (btnText) {
+  if (!operation.op) return;
+  if (!activeNum) return;
+  if (+activeNum === 0 && operation.op === "÷") {
+    alert("You can't do that LOL");
+    return;
+  }
+  operation.values.push(+activeNum);
+  activeNum = "";
+  const answer = operate(
+    operation.op,
+    operation.values[0],
+    operation.values[1]
+  );
+  screenRes.textContent = answer;
+  screenCalc.textContent += ` ${btnText} `;
+  clearOperation();
+  operation.answer = answer;
+};
+
+const continueCalc = function (btnText) {
+  clearText();
+  const temp = operation.answer;
+  clearOperation();
+  screenCalc.textContent += `${temp} ${btnText} `;
+  operation.values.push(temp);
+  activeNum = "";
+  operation.op = btnText;
+  screenRes.textContent = temp;
 };
 
 const clearOperation = function () {
@@ -77,43 +108,23 @@ btns.addEventListener("click", function (e) {
     clearText();
     clearOperation();
   } else if (btnText === "=") {
-    if (!operation.op) return;
-    if (!activeNum) return;
-    if (+activeNum === 0) {
-      alert("You can't do that LOL");
-      return;
-    }
-    screenCalc.textContent += ` ${btnText} `;
-    operation.values.push(+activeNum);
-    activeNum = "";
-    const answer = operate(
-      operation.op,
-      operation.values[0],
-      operation.values[1]
-    );
-    console.log(answer);
-    screenRes.textContent = answer;
-    clearOperation();
-    operation.answer = answer;
+    calculate(btnText);
   } else {
-    if (!operation.answer) {
+    if (operation.op) {
+      calculate(btnText);
+      if (!operation.answer) return;
+      continueCalc(btnText);
+    } else if (!operation.answer && operation.answer !== 0) {
       screenCalc.textContent += ` ${btnText} `;
       operation.values.push(+activeNum);
       activeNum = "";
       operation.op = btnText;
     } else {
-      clearText();
-      const temp = operation.answer;
-      clearOperation();
-      screenCalc.textContent += `${temp} ${btnText} `;
-      operation.values.push(temp);
-      activeNum = "";
-      operation.op = btnText;
+      continueCalc(btnText);
     }
   }
 
   console.log(operation);
-  console.log(activeNum);
 });
 
 const init = function () {
