@@ -14,21 +14,18 @@ body {
   font-weight: 400;
   font-size: 2.8rem;
   color: #555;
-}
-
-main {
-  position: relative;
-  height: 100vh;
   background-color: #eee;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
 .heading {
-  position: absolute;
-  top: -12rem;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
   font-size: 4rem;
+  padding: 3.2rem 0 5.2rem 0;
 }
 
 .calculator,
@@ -44,10 +41,10 @@ main {
 }
 
 .calculator {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -45%);
+  transform: translate(-50%, -45%); */
   width: 40rem;
   height: 50rem;
   margin: 0 auto;
@@ -113,4 +110,15 @@ main {
   border: none;
   font-size: inherit;
   color: inherit;
+  background-color: #eee;
+  transition: all 0.1s;
+}
+
+.btn:hover {
+  background-color: #ccc;
+  /* transform: scale(1.05); */
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
