@@ -12,5 +12,105 @@ body {
   font-family: "Rubik";
   line-height: 1;
   font-weight: 400;
+  font-size: 2.8rem;
   color: #555;
+}
+
+main {
+  position: relative;
+  height: 100vh;
+  background-color: #eee;
+}
+
+.heading {
+  position: absolute;
+  top: -12rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 4rem;
+}
+
+.calculator,
+.calculator-container,
+.screen,
+.btn {
+  border-radius: 9px;
+}
+
+.calculator,
+.btns {
+  background-color: darkcyan;
+}
+
+.calculator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  width: 40rem;
+  height: 50rem;
+  margin: 0 auto;
+  padding: 1.8rem;
+  display: flex;
+}
+
+.calculator-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.screen {
+  flex: 1;
+  background-color: yellow;
+  text-align: right;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.screen-calc {
+  font-size: 2.4rem;
+}
+
+.screen-res {
+  vertical-align: bottom;
+  font-size: 4rem;
+}
+
+.btns {
+  flex: 4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 4fr;
+  gap: 1.2rem;
+}
+
+.btns-help {
+  grid-column: span 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.btns-num {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column: span 3;
+  gap: 1.2rem;
+}
+
+.btns-op {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.btn {
+  border: none;
+  font-size: inherit;
+  color: inherit;
 }
