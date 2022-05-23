@@ -20,12 +20,13 @@ body {
 .main {
   display: flex;
   flex-direction: column;
+  height: 80vh;
 }
 
 .heading {
   text-align: center;
   font-size: 4rem;
-  padding: 3.2rem 0 5.2rem 0;
+  padding: 5.2rem 0 6.8rem 0;
 }
 
 .calculator,
@@ -45,11 +46,13 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -45%); */
-  width: 40rem;
+  width: 35rem;
   height: 50rem;
   margin: 0 auto;
   padding: 1.8rem;
   display: flex;
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 }
 
 .calculator-container {
@@ -91,6 +94,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.2rem;
+  font-size: 1.8rem;
 }
 
 .btns-num {
@@ -110,12 +114,12 @@ body {
   border: none;
   font-size: inherit;
   color: inherit;
-  background-color: #eee;
+  background-color: #ddd;
   transition: all 0.1s;
 }
 
 .btn:hover {
-  background-color: #ccc;
+  background-color: #bbb;
   /* transform: scale(1.05); */
 }
 
