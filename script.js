@@ -34,7 +34,11 @@ const operate = (op, x, y) => {
 };
 
 const deleteChar = function () {
-  if (!screenCalc.textContent || screenRes.textContent) return;
+  if (operation.answer) return;
+  if (!screenCalc.textContent) {
+    clearText();
+    clearOperation();
+  }
   const screenCalcTemp = screenCalc.textContent.replace(/ /g, "");
 
   if (!isNaN(+screenCalcTemp[screenCalcTemp.length - 1])) {
@@ -124,6 +128,7 @@ btns.addEventListener("click", function (e) {
     }
   }
 
+  console.log(activeNum);
   console.log(operation);
 });
 
