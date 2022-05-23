@@ -111,6 +111,7 @@ btns.addEventListener("click", function (e) {
   } else if (btnText === "CLEAR") {
     clearText();
     clearOperation();
+    activeNum = "";
   } else if (btnText === "=") {
     calculate(btnText);
   } else {
