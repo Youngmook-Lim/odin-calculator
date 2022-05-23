@@ -22,8 +22,10 @@ const operation = {
 const calcAdd = (x, y) => x + y;
 const calcSub = (x, y) => x - y;
 const calcMul = (x, y) => x * y;
-const calcDiv = (x, y) =>
-  Math.round((x / y + Number.EPSILON) * 100000) / 100000;
+const calcDiv = (x, y) => {
+  if (y === 0) return;
+  return Math.round((x / y + Number.EPSILON) * 100000) / 100000;
+};
 const operate = (op, x, y) => {
   if (op === "+") return calcAdd(x, y);
   if (op === "-") return calcSub(x, y);
@@ -65,7 +67,8 @@ btns.addEventListener("click", function (e) {
   const btnText = btn.textContent;
 
   if (!isNaN(+btnText) || btnText === ".") {
-    if (btnText === "." && activeNum.includes(".")) return;
+    if (btnText === "." && (activeNum.includes(".") || !activeNum)) return;
+    if (operation.answer) return;
     screenCalc.textContent += btnText;
     activeNum += btnText;
   } else if (btnText === "DELETE") {
@@ -76,6 +79,10 @@ btns.addEventListener("click", function (e) {
   } else if (btnText === "=") {
     if (!operation.op) return;
     if (!activeNum) return;
+    if (+activeNum === 0) {
+      alert("You can't do that LOL");
+      return;
+    }
     screenCalc.textContent += ` ${btnText} `;
     operation.values.push(+activeNum);
     activeNum = "";
@@ -84,6 +91,7 @@ btns.addEventListener("click", function (e) {
       operation.values[0],
       operation.values[1]
     );
+    console.log(answer);
     screenRes.textContent = answer;
     clearOperation();
     operation.answer = answer;
@@ -96,6 +104,7 @@ btns.addEventListener("click", function (e) {
     } else {
       clearText();
       const temp = operation.answer;
+      clearOperation();
       screenCalc.textContent += `${temp} ${btnText} `;
       operation.values.push(temp);
       activeNum = "";
