@@ -86,33 +86,35 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 4fr;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .btns-help {
   grid-column: span 4;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
+  gap: 1rem;
   font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .btns-num {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column: span 3;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .btns-op {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .btn {
   border: none;
   font-size: inherit;
+  font-weight: inherit;
   color: inherit;
   background-color: #da5260;
   transition: all 0.2s;
@@ -125,4 +127,15 @@ body {
 
 .btn:active {
   transform: scale(0.95);
+}
+
+.btn--clear,
+.btn--back {
+  background-color: #686963;
+  color: #8aa29e;
+}
+
+.btn--clear:hover,
+.btn--back:hover {
+  background-color: #595a55;
 }
