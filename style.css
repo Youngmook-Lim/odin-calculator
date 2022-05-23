@@ -13,8 +13,8 @@ body {
   line-height: 1;
   font-weight: 400;
   font-size: 2.8rem;
-  color: #555;
-  background-color: #eee;
+  color: #3d5467;
+  background-color: #f1edee;
 }
 
 .main {
@@ -38,7 +38,7 @@ body {
 
 .calculator,
 .btns {
-  background-color: darkcyan;
+  background-color: #3d5467;
 }
 
 .calculator {
@@ -64,7 +64,7 @@ body {
 
 .screen {
   flex: 1;
-  background-color: yellow;
+  background-color: #8aa29e;
   text-align: right;
   padding: 1rem;
   display: flex;
@@ -114,12 +114,12 @@ body {
   border: none;
   font-size: inherit;
   color: inherit;
-  background-color: #ddd;
-  transition: all 0.1s;
+  background-color: #da5260;
+  transition: all 0.2s;
 }
 
 .btn:hover {
-  background-color: #bbb;
+  background-color: #d32f3f;
   /* transform: scale(1.05); */
 }
 
