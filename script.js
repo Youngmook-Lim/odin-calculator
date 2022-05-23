@@ -120,7 +120,7 @@ btns.addEventListener("click", function (e) {
       continueCalc(btnText);
     } else if (!operation.answer && operation.answer !== 0) {
       screenCalc.textContent += ` ${btnText} `;
-      operation.values.push(+activeNum);
+      if (+activeNum) operation.values.push(+activeNum);
       activeNum = "";
       operation.op = btnText;
     } else {
