@@ -10,6 +10,9 @@ const btnDiv = document.querySelector(".btn--div");
 const btnNum = document.querySelector(".btn--num");
 const screenCalc = document.querySelector(".screen-calc");
 const screenRes = document.querySelector(".screen-res");
+const MAXCALCSCREENLENGTH = 19;
+const MAXRESSCREENLENGTH = 11;
+
 let activeNum = "";
 
 const operation = {
@@ -68,7 +71,9 @@ const calculate = function (btnText) {
     operation.values[0],
     operation.values[1]
   );
-  screenRes.textContent = answer;
+  if (answer.toString().length > MAXRESSCREENLENGTH) {
+    screenRes.textContent = answer.toExponential(4);
+  } else screenRes.textContent = answer;
   screenCalc.textContent += ` ${btnText} `;
   clearOperation();
   operation.answer = answer;
@@ -82,7 +87,10 @@ const continueCalc = function (btnText) {
   operation.values.push(temp);
   activeNum = "";
   operation.op = btnText;
-  screenRes.textContent = temp;
+  // screenRes.textContent = temp;
+  if (temp.toString().length > MAXRESSCREENLENGTH) {
+    screenRes.textContent = temp.toExponential(4);
+  } else screenRes.textContent = temp;
 };
 
 const clearOperation = function () {
@@ -104,6 +112,7 @@ btns.addEventListener("click", function (e) {
   if (!isNaN(+btnText) || btnText === ".") {
     if (btnText === "." && (activeNum.includes(".") || !activeNum)) return;
     if (operation.answer) return;
+    if (screenCalc.textContent.length > MAXCALCSCREENLENGTH) return;
     screenCalc.textContent += btnText;
     activeNum += btnText;
   } else if (btnText === "DELETE") {
@@ -120,8 +129,9 @@ btns.addEventListener("click", function (e) {
       if (!operation.answer) return;
       continueCalc(btnText);
     } else if (!operation.answer && operation.answer !== 0) {
+      if (screenCalc.textContent.length > MAXCALCSCREENLENGTH) return;
       screenCalc.textContent += ` ${btnText} `;
-      if (+activeNum) operation.values.push(+activeNum);
+      if (+activeNum || +activeNum === 0) operation.values.push(+activeNum);
       activeNum = "";
       operation.op = btnText;
     } else {
