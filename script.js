@@ -51,10 +51,11 @@ const deleteChar = function () {
     }
     activeNum = activeNum.slice(0, -1);
     screenCalc.textContent = screenCalc.textContent.slice(0, -1);
-  } else {
-    operation.op = "";
-    screenCalc.textContent = screenCalc.textContent.slice(0, -3);
   }
+  // else {
+  //   operation.op = "";
+  //   screenCalc.textContent = screenCalc.textContent.slice(0, -3);
+  // }
 };
 
 const calculate = function (btnText) {
